@@ -8,7 +8,107 @@
     <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
-<body class="text-red-600">
-    This is clone of mac calculator
+<body class="bg-desktop bg-no-repeat bg-cover font-poppins text-white h-screen w-screen">
+    <div class="w-screen h-screen overflow-hidden">   <!-- content Wrapper Starts -->
+        <div class="calculator hidden absolute top-auto left-1/4 max-h-[21rem] rounded-lg border border-gray-600 backdrop-blur-2xl bg-zinc-800/60 flex flex-col transition-all ease-in-out duration-1000">   <!-- Calculator Box Starts -->
+            <div class="header">
+                <div class="window-action flex p-1">
+                    <button class="close h-3.5 w-3.5 mx-1 rounded-full bg-[#FF5F56]"></button>
+                    <button class="shrink h-3.5 w-3.5 mx-1 rounded-full bg-[#FEBC2E]"></button>
+                    <button class="resize h-3.5 w-3.5 mx-1 rounded-full bg-[#27C840]"></button>
+                </div>
+                <div class="result text-white p-2 flex justify-end text-5xl">0</div>
+            </div>
+            <div class="button-area flex text-xl border border-transparent grow">
+                <div class="extra-button flex justify-start items-start h-[16rem]">
+                    <div class="flex flex-col h-full mr-px">
+                        <button class="( w-16 h-12 bg-white/10 my-px" onclick="appendExp('(')">(</button>
+                        <button class="2nd w-16 h-12 bg-white/10 my-px">2<sup>nd</sup></button>
+                        <button class="1/x w-16 h-12 bg-white/10 my-px" onclick="deno()"><sup>1</sup>/<sub>x</sub></button>
+                        <button class="x! w-16 h-12 bg-white/10 my-px" onclick="factorial()">x!</button>
+                        <button class="rad w-16 h-12 bg-white/10 my-px rounded-bl-lg" onclick="radians()">rad</button>
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px">
+                        <button class=") w-16 h-12 bg-white/10 my-px" onclick="appendExp(')')">)</button>
+                        <button class="x2 w-16 h-12 bg-white/10 my-px" onclick="square()">x<sup>2</sup></button>
+                        <button class="root2 w-16 h-12 bg-white/10 my-px" onclick="sqrt()"><sup>2</sup>&#8730x</button>
+                        <button class="sin w-16 h-12 bg-white/10 my-px" onclick="sin()">sin</button>
+                        <button class="sinh w-16 h-12 bg-white/10 my-px" onclick="sinh()">sinh</button>
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px">
+                        <button class="mc w-16 h-12 bg-white/10 my-px">mc</button>
+                        <button class="x3 w-16 h-12 bg-white/10 my-px" onclick="cube()">x<sup>3</sup></button>
+                        <button class="root3 w-16 h-12 bg-white/10 my-px"  onclick="cbrt()"><sup>3</sup>&#8730x</button>
+                        <button class="cos w-16 h-12 bg-white/10 my-px" onclick="cos()">cos</button>
+                        <button class="cosh w-16 h-12 bg-white/10 my-px" onclick="cosh()">cosh</button> 
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px">
+                        <button class="m+ w-16 h-12 bg-white/10 my-px">m+</button>
+                        <button class="xy w-16 h-12 bg-white/10 my-px" onclick="appendExp('**')">x<sup>y</sup></button>
+                        <button class="rooty w-16 h-12 bg-white/10 my-px"><sup>y</sup>&#8730x</button>
+                        <button class="tan w-16 h-12 bg-white/10 my-px" onclick="tan()">tan</button>
+                        <button class="tanh w-16 h-12 bg-white/10 my-px" onclick="tanh()">tanh</button>
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px">
+                        <button class="m- w-16 h-12 bg-white/10 my-px">m-</button>
+                        <button class="ex w-16 h-12 bg-white/10 my-px" onclick="powe()">e<sup>x</sup></button>
+                        <button class="ln w-16 h-12 bg-white/10 my-px" onclick="ln()">ln</button>
+                        <button class="e w-16 h-12 bg-white/10 my-px" onclick="appendExp('2.71828182')">e</button>
+                        <button class="pi w-16 h-12 bg-white/10 my-px" onclick="appendExp('3.14159265359')">&#8719</button> 
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px mr-0.5">
+                        <button class="mr w-16 h-12 bg-white/10 my-px">mr</button>
+                        <button class="10x w-16 h-12 bg-white/10 my-px" onclick="pow10()">10<sup>x</sup></button>
+                        <button class="log10 w-16 h-12 bg-white/10 my-px" onclick="log10()">log<sub>10</sub></button>
+                        <button class="ee w-16 h-12 bg-white/10 my-px" onclick="appendExp('*10**')">EE</button>
+                        <button class="rand w-16 h-12 bg-white/10 my-px" onclick="rand()">Rand</button>
+                    </div>
+                </div>
+                <div class="main-button flex justify-start items-start h-[16rem]">
+                    <div class="flex flex-col h-full mr-px">
+                        <div class="flex">
+                            <button class="ac w-16 h-12 bg-white/10 my-px mr-px" onclick="result.innerText=0">AC</button>
+                            <button class="+- w-16 h-12 bg-white/10 my-px ml-px"  onclick="changeSign()"><sup>+</sup>/<sub>-</sub></button>
+                        </div>
+                        <div class="flex">
+                            <button class="seven w-16 h-12 bg-white/30 my-px mr-px" onclick="appendExp('7')">7</button>
+                            <button class="eight w-16 h-12 bg-white/30 my-px ml-px" onclick="appendExp('8')">8</button>
+                        </div>
+                        <div class="flex">
+                            <button class="four w-16 h-12 bg-white/30 my-px mr-px" onclick="appendExp('4')">4</button>
+                            <button class="five w-16 h-12 bg-white/30 my-px ml-px" onclick="appendExp('5')">5</button>
+                        </div>
+                        <div class="flex">
+                            <button class="one w-16 h-12 bg-white/30 my-px mr-px" onclick="appendExp('1')">1</button>
+                            <button class="two w-16 h-12 bg-white/30 my-px ml-px" onclick="appendExp('2')">2</button>
+                        </div>
+                        <button class="zero w-full h-12 bg-white/30 my-px" onclick="appendExp('0')">0</button>
+                    </div>
+
+                    <div class="flex flex-col h-full mx-px">
+                        <button class="% w-16 h-12 bg-white/10 my-px" onclick="percent()">%</button>
+                        <button class="9 w-16 h-12 bg-white/30 my-px" onclick="appendExp('9')">9</button>
+                        <button class="6 w-16 h-12 bg-white/30 my-px" onclick="appendExp('6')">6</button>
+                        <button class="3 w-16 h-12 bg-white/30 my-px" onclick="appendExp('3')">3</button>
+                        <button class="dot w-16 h-12 bg-white/30 my-px">.</button>
+                    </div>
+
+                    <div class="flex flex-col h-full ml-px text-2xl">
+                        <button class="div w-16 h-12 bg-[#FF9F1C] my-px" onclick="appendExp('/')">÷</button>
+                        <button class="mul w-16 h-12 bg-[#FF9F1C] my-px" onclick="appendExp('*')">x</button>
+                        <button class="sub w-16 h-12 bg-[#FF9F1C] my-px" onclick="appendExp('-')">-</button>
+                        <button class="add w-16 h-12 bg-[#FF9F1C] my-px" onclick="appendExp('+')">+</button>
+                        <button class="equal w-16 h-12 bg-[#FF9F1C] my-px rounded-br-lg" onclick="compute()">=</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>   <!-- Calculator Box Ends -->
+    </div>  <!-- content Wrapper Ends -->
 </body>
 </html>
