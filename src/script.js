@@ -12,34 +12,6 @@ var exp1 = "";
 var op = "";
 var exp2 = "";
 var expFull = "";
-var appendOperator = function (operator) {
-    if (op !== "") {
-        calculate();
-    }
-    else {
-        switch (operator) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-            case "%":
-                op = operator;
-                break;
-            default:
-                break;
-        }
-    }
-};
-var appendNum = function (number) {
-    if (op === "") {
-        exp1 += number;
-    }
-    else {
-        exp2 += number;
-    }
-};
-var calculate = function () {
-};
 function appendExp(char) {
     if (result.innerText == null || result.innerText == "0")
         result.innerText = char;

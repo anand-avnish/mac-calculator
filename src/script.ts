@@ -17,37 +17,6 @@ let op:string="";
 let exp2:string="";
 let expFull:string="";
 
-const appendOperator=(operator:string) =>{
-    if(op!==""){
-        calculate();
-    }else{
-        switch (operator) {
-            case "+":
-            case "-":
-            case "*":
-            case "/":
-            case "%":
-                op=operator;
-                break;
-        
-            default:
-                break;
-        }
-    }
-}
-
-const appendNum=(number:string)=>{
-    if(op===""){
-        exp1+=number;
-    }else{
-        exp2+=number;
-    }
-}
-
-const calculate = ()=>{
-
-}
-
 function appendExp(char:string) {
 	if(result.innerText == null || result.innerText == "0")
         result.innerText = char
